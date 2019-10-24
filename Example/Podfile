@@ -1,0 +1,14 @@
+use_frameworks!
+
+platform :ios, '8.0'
+
+target 'ExLogSDK_Example' do
+  
+  pod 'ExLogSDK', :path => '../'
+  pod 'ExMVVMKit'
+  
+  target 'ExLogSDK_Tests' do
+    inherit! :search_paths
+
+  end
+end
