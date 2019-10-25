@@ -6,9 +6,9 @@
 //  Copyright (c) 2019 samspirit. All rights reserved.
 //
 
-#import "EXAppDelegate.h"
+#import "ExAppDelegate.h"
 
-@implementation EXAppDelegate
+@implementation ExAppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {

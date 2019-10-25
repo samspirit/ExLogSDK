@@ -1,5 +1,5 @@
 //
-//  EXViewController.h
+//  EXAppDelegate.h
 //  ExLogSDK
 //
 //  Created by Geely on 10/24/2019.
@@ -8,6 +8,8 @@
 
 @import UIKit;
 
-@interface EXViewController : UIViewController
+@interface ExAppDelegate : UIResponder <UIApplicationDelegate>
+
+@property (strong, nonatomic) UIWindow *window;
 
 @end

@@ -6,18 +6,25 @@
 //  Copyright (c) 2019 samspirit. All rights reserved.
 //
 
-#import "EXViewController.h"
+#import "ExViewController.h"
+#import <ExLogSDK/ExLogSDK.h>
 
-@interface EXViewController ()
+@interface ExViewController ()
 
 @end
 
-@implementation EXViewController
+@implementation ExViewController
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
+    
+    [ExLogSDK sharedManager];
+    
+    NSLog(@":");
+    
+    DDLogDebug(@"gg");
 }
 
 - (void)didReceiveMemoryWarning

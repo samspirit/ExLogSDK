@@ -1,5 +1,5 @@
 //
-//  ExLogSDK.h
+//  ExLogFormatter.h
 //  ExLogSDK
 //
 //  Created by ecarx on 2019/10/24.
@@ -10,11 +10,8 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface ExLogSDK : NSObject
+@interface ExLogFormatter : NSObject <DDLogFormatter>
 
-@property (nonatomic, strong) DDFileLogger *fileLogger;
-
-+ (instancetype)sharedManager;
 @end
 
 NS_ASSUME_NONNULL_END

@@ -11,11 +11,11 @@ Pod::Spec.new do |s|
   s.version          = '0.1.1'
   s.summary          = 'A short description of ExLogSDK.'
 
-  s.homepage         = 'https://github.com/11873288@qq.com/ExLogSDK'
+  s.homepage         = 'https://github.com/samspirit/ExLogSDK'
 
   s.license          = { :type => 'MIT', :file => 'LICENSE' }
   s.author           = { 'samspirit' => '11873288@qq.com' }
-  s.source           = { :git => 'https://github.com/11873288@qq.com/ExLogSDK.git', :tag => s.version.to_s }
+  s.source           = { :git => 'https://github.com/samspirit/ExLogSDK.git', :tag => s.version.to_s }
 
   s.ios.deployment_target = '8.0'
 
@@ -28,4 +28,5 @@ Pod::Spec.new do |s|
   # s.public_header_files = 'Pod/Classes/**/*.h'
   # s.frameworks = 'UIKit', 'MapKit'
    s.dependency 'ExMVVMKit'
+   s.dependency 'CocoaLumberjack'
 end
