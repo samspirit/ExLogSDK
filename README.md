@@ -27,3 +27,11 @@ samspirit, 11873288@qq.com
 ## License
 
 ExLogSDK is available under the MIT license. See the LICENSE file for more info.
+
+## 更新日志
+
+```ruby
+####版本更新日志
+#### version 0.1.1
+1.add Logger
+```
