@@ -65,11 +65,11 @@
             break;
         case MFMailComposeResultSent:
 //            DDLogDebug(@"LoggerDetailViewController -> mailComposeController:Mail sent Success");
-            [MBProgressHUD showSuccess:@"发送邮件成功"];
+//            [MBProgressHUD showSuccess:@"发送邮件成功"];
             break;
         case MFMailComposeResultFailed:
 //            DDLogDebug(@"LoggerDetailViewController -> mailComposeController:Mail send errored:发送邮件失败...");
-            [MBProgressHUD showError:@"发送邮件失败"];
+//            [MBProgressHUD showError:@"发送邮件失败"];
             break;
         default:
             break;
@@ -109,7 +109,7 @@
     else
     {
         // 在设备还没有添加邮件账户的时候mailViewController为空，下面的present view controller会导致程序崩溃，这里要作出判断
-        [MBProgressHUD showMessage:@"设备还没有添加邮件账户,请先增加"];
+//        [MBProgressHUD showMessage:@"设备还没有添加邮件账户,请先增加"];
     }
 
 }

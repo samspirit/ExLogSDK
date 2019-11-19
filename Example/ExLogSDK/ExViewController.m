@@ -8,6 +8,7 @@
 
 #import "ExViewController.h"
 #import <ExLogSDK/ExLogSDK.h>
+#import <MGJRouter/MGJRouter.h>
 
 @interface ExViewController ()
 
@@ -21,11 +22,13 @@
 	// Do any additional setup after loading the view, typically from a nib.
     
     [ExLogSDK sharedManager];
-    
-    NSLog(@":");
-    
-    DDLogDebug(@"gg");
 }
+
+- (IBAction)btnLogClick:(UIButton *)sender {
+    UIViewController *logView = [MGJRouter objectForURL:kLibExLogger withUserInfo:nil];
+    [self.navigationController pushViewController:logView animated:YES];
+}
+
 
 - (void)didReceiveMemoryWarning
 {

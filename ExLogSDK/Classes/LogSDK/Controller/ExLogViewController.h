@@ -5,11 +5,11 @@
 //  Created by ecarx on 2019/10/24.
 //
 
-#import <ExMVVMKit/ExMVVMKit.h>
+#import <UIKit/UIKit.h>
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface ExLogViewController : BaseViewController
+@interface ExLogViewController : UIViewController
 
 @end
 

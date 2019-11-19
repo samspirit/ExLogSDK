@@ -6,10 +6,7 @@
 //
 
 #import "ExLogSDK.h"
-#import <ExMVVMKit/ExMVVMKit.h>
 #import "ExLogViewController.h"
-
-
 #import "ExLogFormatter.h"
 
 @implementation ExLogSDK
@@ -17,7 +14,7 @@
 +(void)load {
     [super load];
     
-    [ModuleRouter registerURLPattern:@"ykt://geely2.0/RPAControl" toObjectHandler:^id(NSDictionary *routerParameters) {
+    [MGJRouter registerURLPattern:kLibExLogger toObjectHandler:^id(NSDictionary *routerParameters) {
         return [[ExLogViewController alloc] init];
     }];
 }
