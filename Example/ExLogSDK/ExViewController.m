@@ -22,6 +22,12 @@
 	// Do any additional setup after loading the view, typically from a nib.
     
     [ExLogSDK sharedManager];
+    
+    DDLogDebug(@"error");
+    DDLogError(@"error");
+    DDLogInfo(@"info");
+    DDLogVerbose(@"Verbose");
+    DDLogWarn(@"DDLogWarn");
 }
 
 - (IBAction)btnLogClick:(UIButton *)sender {

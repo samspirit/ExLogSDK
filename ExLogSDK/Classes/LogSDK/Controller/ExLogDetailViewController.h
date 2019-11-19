@@ -6,10 +6,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "ExLogSDK.h"
 
 NS_ASSUME_NONNULL_BEGIN
-
-static NSString *const kMail_cc_ToRecipients_Address = @"11873288@qq.com";
 
 @interface ExLogDetailViewController : UIViewController
 
