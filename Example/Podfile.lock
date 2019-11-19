@@ -2,7 +2,7 @@ PODS:
   - CocoaLumberjack (3.6.0):
     - CocoaLumberjack/Core (= 3.6.0)
   - CocoaLumberjack/Core (3.6.0)
-  - ExLogSDK (0.1.1):
+  - ExLogSDK (0.1.2):
     - CocoaLumberjack
     - MGJRouter
   - MGJRouter (0.10.0)
@@ -22,7 +22,7 @@ EXTERNAL SOURCES:
 
 SPEC CHECKSUMS:
   CocoaLumberjack: 78b0c238666f4f58db069738ec176f4519557516
-  ExLogSDK: f3d0ce641a8bc8076238e7a2d5a5fa1d4702bb11
+  ExLogSDK: 6fe505be812d038154f1f0ff2e23a6103107bd17
   MGJRouter: 15d94541eb2cc81eff7d577337288feb7ae9575f
 
 PODFILE CHECKSUM: e370a5e37dc5777c13dc781306442b138fd257c8

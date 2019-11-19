@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'ExLogSDK'
-  s.version          = '0.1.1'
+  s.version          = '0.1.2'
   s.summary          = 'A short description of ExLogSDK.'
 
   s.homepage         = 'https://github.com/samspirit/ExLogSDK'

@@ -31,6 +31,9 @@ ExLogSDK is available under the MIT license. See the LICENSE file for more info.
 ## 更新日志
 ####版本更新日志
 ```ruby
+#### version 0.1.2
+1.添加邮件发送功能
+2.提供接口，可修改邮件的接收，抄送人
 #### version 0.1.1
 1.add Logger
 ```
