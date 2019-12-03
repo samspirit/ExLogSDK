@@ -7,12 +7,14 @@
 //
 
 #import "ExAppDelegate.h"
+#import <ExLogSDK/ExLogSDK.h>
 
 @implementation ExAppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     // Override point for customization after application launch.
+    [ExLogSDK sharedManager];
     return YES;
 }
 

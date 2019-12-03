@@ -10,7 +10,7 @@
 #import "ExLogSDK.h"
 
 @interface ExLogViewController () <UITableViewDataSource, UITableViewDelegate>
-@property (strong, nonatomic) UITableView *myTableView;
+@property (strong, nonatomic) UITableView *tableView;
 @property (nonatomic, strong) NSDateFormatter *dateFormatter;
 @property (nonatomic, weak) DDFileLogger *fileLogger;
 @property (nonatomic, strong) NSArray *logFiles;
@@ -27,15 +27,7 @@
     _fileLogger = [ExLogSDK sharedManager].fileLogger;
     [self loadLogFiles];
 
-    if (!_myTableView) {
-        _myTableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, [[UIScreen mainScreen] bounds].size.width, [[UIScreen mainScreen] bounds].size.height) style:UITableViewStyleGrouped];
-        _myTableView.showsVerticalScrollIndicator = NO;
-        _myTableView.showsHorizontalScrollIndicator=NO;
-        _myTableView.dataSource = self;
-        _myTableView.delegate = self;
-        [_myTableView registerClass:[UITableViewCell class] forCellReuseIdentifier:NSStringFromClass([UITableView class])];
-        [self.view addSubview:_myTableView];
-    }
+    [self.view addSubview:self.tableView];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -66,7 +58,7 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
 {
-    if (section==0) {
+    if (section == 0) {
         return 40;
     }
     return 10;
@@ -87,19 +79,17 @@
     if (section == 0) {
         return self.logFiles.count;
     }
-    
     return 1;
 }
 
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
 {
     UIView *headView=[[UIView alloc]initWithFrame:CGRectMake(0, 0, [[UIScreen mainScreen] bounds].size.width, 30)];
-    if (section==0) {
+    if (section == 0) {
         UILabel *myLabel=[[UILabel alloc]initWithFrame:CGRectMake(10, 10, [[UIScreen mainScreen] bounds].size.width, 30)];
-        myLabel.text=@"日记列表";
+        myLabel.text = @"日记列表";
         [headView addSubview:myLabel];
     }
-    
     return headView;
 }
 
@@ -130,8 +120,7 @@
         NSData *logData = [NSData dataWithContentsOfFile:logFileInfo.filePath];
         NSString *logText = [[NSString alloc] initWithData:logData encoding:NSUTF8StringEncoding];
         
-        ExLogDetailViewController *detailViewController = [[ExLogDetailViewController alloc] initWithLog:logText
-                                                                                             forDateString:[self.dateFormatter stringFromDate:logFileInfo.creationDate]];
+        ExLogDetailViewController *detailViewController = [[ExLogDetailViewController alloc] initWithLog:logText forDateString:[self.dateFormatter stringFromDate:logFileInfo.creationDate]];
         [self.navigationController pushViewController:detailViewController animated:YES];
     } else {
         for (DDLogFileInfo *logFileInfo in self.logFiles) {
@@ -140,10 +129,21 @@
                 [[NSFileManager defaultManager] removeItemAtPath:logFileInfo.filePath error:nil];
             }
         }
-        
         [self loadLogFiles];
-        [self.myTableView reloadData];
+        [self.tableView reloadData];
     }
 }
 
+-(UITableView *)tableView
+{
+    if (!_tableView) {
+        _tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, [[UIScreen mainScreen] bounds].size.width, [[UIScreen mainScreen] bounds].size.height) style:UITableViewStyleGrouped];
+        _tableView.showsVerticalScrollIndicator = NO;
+        _tableView.showsHorizontalScrollIndicator = NO;
+        _tableView.dataSource = self;
+        _tableView.delegate = self;
+        [_tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:NSStringFromClass([UITableView class])];
+    }
+    return _tableView;
+}
 @end

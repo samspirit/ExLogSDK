@@ -25,13 +25,7 @@
     self.textView.text = self.logText;
     [self.view addSubview:self.textView];
     
-    //设置右边
-    UIButton*rightButton = [[UIButton alloc]initWithFrame:CGRectMake(0,0,70,30)];
-    [rightButton setTitleColor:[UIColor blueColor] forState:UIControlStateNormal];
-    [rightButton setTitle:@"Send" forState:UIControlStateNormal];
-    [rightButton addTarget:self action:@selector(sendMailMessage)forControlEvents:UIControlEventTouchUpInside];
-    UIBarButtonItem*rightItem = [[UIBarButtonItem alloc]initWithCustomView:rightButton];
-    self.navigationItem.rightBarButtonItem= rightItem;
+    self.navigationItem.rightBarButtonItem= [[UIBarButtonItem alloc] initWithTitle:@"send" style:UIBarButtonItemStyleDone target:self action:@selector(sendMailMessage)];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -61,15 +55,12 @@
             break;
         case MFMailComposeResultSaved:
             DDLogDebug(@"LoggerDetailViewController -> mailComposeController:Mail saved...");
-            
             break;
         case MFMailComposeResultSent:
             DDLogDebug(@"LoggerDetailViewController -> mailComposeController:Mail sent Success");
-//            [MBProgressHUD showSuccess:@"发送邮件成功"];
             break;
         case MFMailComposeResultFailed:
             DDLogDebug(@"LoggerDetailViewController -> mailComposeController:Mail send errored:发送邮件失败...");
-//            [MBProgressHUD showError:@"发送邮件失败"];
             break;
         default:
             break;
@@ -84,11 +75,9 @@
     MFMailComposeViewController *mc = [[MFMailComposeViewController alloc] init];
     mc.mailComposeDelegate = self;
     
-    
     if ([MFMailComposeViewController canSendMail])
     {
         [mc setSubject:@"APP运行日志"];
-        
         // 设置收件人
         NSString *mailName = [ExLogSDK sharedManager].mailName;
         NSString *sendMailName = [mailName isEqualToString:@""] ? kMail_ToRecipients_Address : mailName;
@@ -128,6 +117,5 @@
         [alertView addAction:okAction];
         [self presentViewController:alertView animated:YES completion:nil];
     }
-
 }
 @end

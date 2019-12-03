@@ -21,8 +21,6 @@
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
     
-    [ExLogSDK sharedManager];
-    
     DDLogDebug(@"error");
     DDLogError(@"error");
     DDLogInfo(@"info");
@@ -31,6 +29,7 @@
 }
 
 - (IBAction)btnLogClick:(UIButton *)sender {
+    DDLogInfo(@"btn Log Click");
     UIViewController *logView = [MGJRouter objectForURL:kLibExLogger withUserInfo:nil];
     [self.navigationController pushViewController:logView animated:YES];
 }
