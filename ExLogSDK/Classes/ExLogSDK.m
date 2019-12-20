@@ -9,16 +9,19 @@
 #import "ExLogViewController.h"
 #import "ExLogFormatter.h"
 
-NSString * const kMail_ToRecipients_Address = @"youjie.xu@ecarx.com.cn";
+#import <MGJRouter/MGJRouter.h>
 
 @implementation ExLogSDK
-@synthesize mailName = _mailName,ccMailArray = _ccMailArray, bccMailArray = _bccMailArray;
 
 +(void)load {
     [super load];
-    
     [MGJRouter registerURLPattern:kLibExLogger toObjectHandler:^id(NSDictionary *routerParameters) {
-        return [[ExLogViewController alloc] init];
+        NSDictionary *dict = routerParameters[@"MGJRouterParameterUserInfo"];
+        ExLogViewController *logVC = [[ExLogViewController alloc] init];
+        logVC.toRecipients = dict[@"to"];
+        logVC.ccRecipients = dict[@"cc"];
+        logVC.bccRecipients = dict[@"bcc"];
+        return logVC;
     }];
 }
 
@@ -79,32 +82,5 @@ NSString * const kMail_ToRecipients_Address = @"youjie.xu@ecarx.com.cn";
     }
     
     return _fileLogger;
-}
-#pragma mark - getter && setter
--(NSString *)mailName
-{
-    return _mailName;
-}
--(void)setMailName:(NSString *)mailName
-{
-    _mailName = mailName;
-}
-
--(NSArray *)ccMailArray
-{
-    return _ccMailArray;
-}
--(void)setCcMailArray:(NSArray *)ccMailArray
-{
-    _ccMailArray = ccMailArray;
-}
-
--(NSArray *)bccMailArray
-{
-    return _bccMailArray;
-}
--(void)setBccMailArray:(NSArray *)bccMailArray
-{
-    _bccMailArray = bccMailArray;
 }
 @end

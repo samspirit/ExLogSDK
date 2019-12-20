@@ -6,12 +6,18 @@
 //
 
 #import "ExLogDetailViewController.h"
+#import "ExLogSDK.h"
 #import <MessageUI/MessageUI.h>
 
 @interface ExLogDetailViewController () <MFMailComposeViewControllerDelegate>
 @property (nonatomic, strong) NSString *logText;
 @property (nonatomic, strong) NSString *logDate;
 @property (nonatomic, strong) UITextView *textView;
+@property (nonatomic, strong) ExLogConfig *config;
+
+@property (nonatomic, strong) NSArray<NSString *> *toRecipients;
+@property (nonatomic, strong) NSArray<NSString *> *ccRecipients;
+@property (nonatomic, strong) NSArray<NSString *> *bccRecipients;
 @end
 
 @implementation ExLogDetailViewController
@@ -41,6 +47,16 @@
         self.title = logDate;
     }
     return self;
+}
+
+-(void)updateWithConfig:(void (^)(ExLogConfig * _Nonnull))configBlock
+{
+    if (configBlock) {
+        configBlock(self.config);
+        self.toRecipients = self.config.toRecipients;
+        self.bccRecipients = self.config.bccRecipients;
+        self.ccRecipients = self.config.ccRecipients;
+    }
 }
 
 #pragma mark MFMailComposeViewControllerDelegate
@@ -79,17 +95,15 @@
     {
         [mc setSubject:@"APP运行日志"];
         // 设置收件人
-        NSString *mailName = [ExLogSDK sharedManager].mailName;
-        NSString *sendMailName = [mailName isEqualToString:@""] ? kMail_ToRecipients_Address : mailName;
-        [mc setToRecipients:[NSArray arrayWithObjects:sendMailName, nil]];
+        [mc setToRecipients:self.toRecipients];
         //设置cc 设置抄送人
-        NSArray *ccList = [ExLogSDK sharedManager].ccMailArray;
+        NSArray *ccList = self.ccRecipients;
         if ([ccList count] > 0) {
             [mc setCcRecipients:ccList];
         }
         
         //设置bcc 设置密抄送
-        NSArray *bccList = [ExLogSDK sharedManager].bccMailArray;
+        NSArray *bccList = self.bccRecipients;
         if ([bccList count] > 0) {
             [mc setBccRecipients:bccList];
         }
@@ -117,5 +131,17 @@
         [alertView addAction:okAction];
         [self presentViewController:alertView animated:YES completion:nil];
     }
+}
+
+- (ExLogConfig *)config{
+    if (!_config) {
+        _config = [ExLogConfig defaultConfig];
+    }
+    return _config;
+}
+
+-(void)dealloc
+{
+    NSLog(@"%s",__func__);
 }
 @end

@@ -8,15 +8,13 @@
 #import <Foundation/Foundation.h>
 #import <CocoaLumberjack/CocoaLumberjack.h>
 #import <MGJRouter/MGJRouter.h>
-#import "ExLogFormatter.h"
-#import "ExLogViewController.h"
-#import "ExLogDetailViewController.h"
+#import "ExSuspensionManager.h"
 
-NS_ASSUME_NONNULL_BEGIN
 #define kLibExLogger @"lib://ExLogger"
 
-extern NSString * const kMail_ToRecipients_Address;
+NS_ASSUME_NONNULL_BEGIN
 
+extern NSString * const kMail_ToRecipients_Address;
 
 static const DDLogLevel ddLogLevel = DDLogLevelVerbose;
 
@@ -26,10 +24,6 @@ static const DDLogLevel ddLogLevel = DDLogLevelVerbose;
 
 @property (nonatomic, strong) DDFileLogger *fileLogger;
 
-/// 收件人
-@property (nonatomic, copy) NSString *mailName;
-@property (nonatomic, copy) NSArray *ccMailArray;
-@property (nonatomic, copy) NSArray *bccMailArray;
 @end
 
 NS_ASSUME_NONNULL_END

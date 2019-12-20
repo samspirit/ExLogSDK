@@ -35,7 +35,6 @@
     // Dispose of any resources that can be recreated.
 }
 
-
 //读取日志的文件个数
 - (void)loadLogFiles
 {
@@ -121,6 +120,9 @@
         NSString *logText = [[NSString alloc] initWithData:logData encoding:NSUTF8StringEncoding];
         
         ExLogDetailViewController *detailViewController = [[ExLogDetailViewController alloc] initWithLog:logText forDateString:[self.dateFormatter stringFromDate:logFileInfo.creationDate]];
+        [detailViewController updateWithConfig:^(ExLogConfig * _Nonnull config) {
+            config.itemToRecipients(self.toRecipients).itemCcRecipients(self.ccRecipients).itemBccRecipients(self.bccRecipients);
+        }];
         [self.navigationController pushViewController:detailViewController animated:YES];
     } else {
         for (DDLogFileInfo *logFileInfo in self.logFiles) {
@@ -145,5 +147,10 @@
         [_tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:NSStringFromClass([UITableView class])];
     }
     return _tableView;
+}
+
+-(void)dealloc
+{
+    NSLog(@"%s",__func__);
 }
 @end

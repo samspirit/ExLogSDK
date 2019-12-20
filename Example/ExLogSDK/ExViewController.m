@@ -10,7 +10,7 @@
 #import <ExLogSDK/ExLogSDK.h>
 #import <MGJRouter/MGJRouter.h>
 
-@interface ExViewController ()
+@interface ExViewController () <ExSuspensionManagerDelegate>
 
 @end
 
@@ -21,17 +21,23 @@
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
     
-    DDLogDebug(@"error");
-    DDLogError(@"error");
-    DDLogInfo(@"info");
-    DDLogVerbose(@"Verbose");
-    DDLogWarn(@"DDLogWarn");
+    DDLogDebug(@"Log Debug");
+    DDLogError(@"Log Error");
+    DDLogInfo(@"Log Info");
+    DDLogVerbose(@"Log Verbose");
+    DDLogWarn(@"Log Warn");
 }
 
 - (IBAction)btnLogClick:(UIButton *)sender {
     DDLogInfo(@"btn Log Click");
-    UIViewController *logView = [MGJRouter objectForURL:kLibExLogger withUserInfo:nil];
+    NSDictionary *dict = @{@"to":@[@"1236666"],@"bcc":@[@"1234"]};
+    UIViewController *logView = [MGJRouter objectForURL:kLibExLogger withUserInfo:dict];
     [self.navigationController pushViewController:logView animated:YES];
+    
+    
+//    [[ExSuspensionManager sharedManager] createSuspension];
+//    [ExSuspensionManager sharedManager].delegate = self;
+//    [[ExSuspensionManager sharedManager] displaySuspension];
 }
 
 
@@ -41,4 +47,8 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (void)suspensionManagerClick:(ExSuspensionManager *)suspensionView
+{
+    NSLog(@"www");
+}
 @end
