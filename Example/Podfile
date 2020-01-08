@@ -6,7 +6,6 @@ target 'ExLogSDK_Example' do
   
   pod 'ExLogSDK', :path => '../'
   
-  pod 'CocoaLumberjack'
   target 'ExLogSDK_Tests' do
     inherit! :search_paths
 

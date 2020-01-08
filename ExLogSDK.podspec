@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'ExLogSDK'
-  s.version          = '0.1.3'
+  s.version          = '0.2.1'
   s.summary          = 'A short description of ExLogSDK.'
 
   s.homepage         = 'https://github.com/samspirit/ExLogSDK'
@@ -27,6 +27,4 @@ Pod::Spec.new do |s|
 
   # s.public_header_files = 'Pod/Classes/**/*.h'
   # s.frameworks = 'UIKit', 'MapKit'
-   s.dependency 'MGJRouter'
-   s.dependency 'CocoaLumberjack'
 end

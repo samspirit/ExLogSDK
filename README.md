@@ -31,6 +31,11 @@ ExLogSDK is available under the MIT license. See the LICENSE file for more info.
 ## 更新日志
 ####版本更新日志
 ```ruby
+#### version 0.2.1
+1.重构日志模块，移除邮件发送等功能，
+2.设置日志的类型（默认，警告，错误，调试，信息）
+3.设置类型的颜色（白色，黄色，红色，蓝色，蓝色）
+4.设置快捷宏使用
 #### version 0.1.2
 1.添加邮件发送功能
 2.提供接口，可修改邮件的接收，抄送人

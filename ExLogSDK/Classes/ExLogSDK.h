@@ -6,23 +6,35 @@
 //
 
 #import <Foundation/Foundation.h>
-#import <CocoaLumberjack/CocoaLumberjack.h>
-#import <MGJRouter/MGJRouter.h>
-#import "ExSuspensionManager.h"
+#import "NSString+Log.h"
+#import "ExLogModel.h"
 
-#define kLibExLogger @"lib://ExLogger"
+
+#ifdef DEBUG
+/// 中控打印及log记录
+#define ExLog(format, ...) {NSLog( @"< %@:(第 %d 行) > %@", [[NSString stringWithUTF8String:__FILE__] lastPathComponent], __LINE__, format);[ExLogSDK.sharedManager logText:format];}
+
+#define ExLogDebug(format, ...) {NSLog( @"< %@:(第 %d 行) > %@", [[NSString stringWithUTF8String:__FILE__] lastPathComponent], __LINE__, format);[ExLogSDK.sharedManager logText:format key:ExLogViewTypeDebug];}
+
+#define ExLogError(format, ...) {NSLog( @"< %@:(第 %d 行) > %@", [[NSString stringWithUTF8String:__FILE__] lastPathComponent], __LINE__, format);[ExLogSDK.sharedManager logText:format key:ExLogViewTypeError];}
+
+#define ExLogWarn(format, ...) {NSLog( @"< %@:(第 %d 行) > %@", [[NSString stringWithUTF8String:__FILE__] lastPathComponent], __LINE__, format);[ExLogSDK.sharedManager logText:format key:ExLogViewTypeWarn];}
+
+#define ExLogInfo(format, ...) {NSLog( @"< %@:(第 %d 行) > %@", [[NSString stringWithUTF8String:__FILE__] lastPathComponent], __LINE__, format);[ExLogSDK.sharedManager logText:format key:ExLogViewTypeInfo];}
+#endif
+
 
 NS_ASSUME_NONNULL_BEGIN
-
-extern NSString * const kMail_ToRecipients_Address;
-
-static const DDLogLevel ddLogLevel = DDLogLevelVerbose;
-
+@class ExLogModel;
 @interface ExLogSDK : NSObject
 
 + (instancetype)sharedManager;
 
-@property (nonatomic, strong) DDFileLogger *fileLogger;
+/// 显示或隐藏（在设置根视图控制器之后）
+@property (nonatomic, assign) BOOL logShow;
+
+- (void)logText:(NSString *)text;
+- (void)logText:(NSString *)text key:(ExLogViewType)key;
 
 @end
 
