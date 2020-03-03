@@ -19,7 +19,7 @@ Pod::Spec.new do |s|
   s.ios.deployment_target = '8.0'
   s.static_framework = true
   s.source_files = ['ExLogSDK/Classes/**/*']
-  s.public_header_files = 'ExLogSDK/Classes/ExLogSDK.h'
+  
   # s.resource_bundles = {
   #   'ExLogSDK' => ['ExLogSDK/Assets/*.png']
   # }

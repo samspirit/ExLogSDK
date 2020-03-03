@@ -20,9 +20,9 @@
 
 #define ExLogInfo(format, ...) {NSLog( @"< %@:(第 %d 行) > %@", [[NSString stringWithUTF8String:__FILE__] lastPathComponent], __LINE__, format);[ExLogSDK.sharedManager logText:format key:ExLogViewTypeInfo];}
 
-
 NS_ASSUME_NONNULL_BEGIN
 @class ExLogModel;
+
 @interface ExLogSDK : NSObject
 
 + (instancetype)sharedManager;
