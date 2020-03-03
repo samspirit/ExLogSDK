@@ -154,11 +154,12 @@
         _searchView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.frame.size.width, (top + 48))];
         _searchView.backgroundColor = UIColor.clearColor;
         //
-        self.searchTextField = [[UITextField alloc] initWithFrame:CGRectMake(20, (top + 5), (_searchView.frame.size.width - 40), (_searchView.frame.size.height - top - 10))];
+        self.searchTextField = [[UITextField alloc] initWithFrame:CGRectMake(10, (top + 5), (_searchView.frame.size.width - 20), (_searchView.frame.size.height - top - 10))];
         [_searchView addSubview:self.searchTextField];
-        self.searchTextField.layer.cornerRadius = self.searchTextField.frame.size.height / 2;
+        self.searchTextField.layer.cornerRadius = 5;
         self.searchTextField.layer.masksToBounds = YES;
-        self.searchTextField.backgroundColor = UIColor.whiteColor;
+        
+        self.searchTextField.backgroundColor = [UIColor colorWithRed:86 green:86 blue:86 alpha:1];
         self.searchTextField.placeholder = @"请输入过滤词";
         self.searchTextField.textColor = UIColor.blackColor;
         self.searchTextField.font = [UIFont systemFontOfSize:15];
@@ -176,7 +177,7 @@
         [self.cancelButton setTitle:@"取消" forState:UIControlStateNormal];
         [self.cancelButton setTitleColor:UIColor.blackColor forState:UIControlStateNormal];
         [self.cancelButton setTitleColor:UIColor.redColor forState:UIControlStateHighlighted];
-        self.cancelButton.layer.cornerRadius = self.cancelButton.frame.size.height / 2;
+        self.cancelButton.layer.cornerRadius = 5;
         self.cancelButton.layer.masksToBounds = YES;
         self.cancelButton.backgroundColor = UIColor.whiteColor;
         [self.cancelButton addTarget:self action:@selector(cancelClick:) forControlEvents:UIControlEventTouchUpInside];

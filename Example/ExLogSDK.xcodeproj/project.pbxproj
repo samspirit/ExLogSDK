@@ -212,7 +212,6 @@
 				6003F586195388D20070C39A /* Sources */,
 				6003F587195388D20070C39A /* Frameworks */,
 				6003F588195388D20070C39A /* Resources */,
-				0D5E94E552E2FB452CD244F5 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -299,24 +298,6 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		0D5E94E552E2FB452CD244F5 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-ExLogSDK_Example/Pods-ExLogSDK_Example-frameworks.sh",
-				"${BUILT_PRODUCTS_DIR}/ExLogSDK/ExLogSDK.framework",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ExLogSDK.framework",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-ExLogSDK_Example/Pods-ExLogSDK_Example-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 		4C22F5EC2054B4EBC5126FDF /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;

@@ -9,6 +9,7 @@
 #import "ExLogPopView.h"
 #import "ExLogPopAction.h"
 #import "ExLogView.h"
+#import "UIDevice+Identifier.h"
 
 static CGFloat const originButton = 20.0;
 static CGFloat const sizeButton = 60.0;
@@ -31,7 +32,6 @@ static CGFloat const sizeButton = 60.0;
 {
     if (self = [super init]) {
         self.baseView = UIApplication.sharedApplication.delegate.window;
-        
         [self logConfig];
     }
     return self;
@@ -39,12 +39,17 @@ static CGFloat const sizeButton = 60.0;
 
 - (void)logConfig
 {
-#ifdef DEBUG
     NSSetUncaughtExceptionHandler(&readException);
     [self.logFile read];
     
-    [self logText:[NSString stringWithFormat:@"打开使用[%@ -- version:%@]", [NSBundle.mainBundle.infoDictionary objectForKey:@"CFBundleDisplayName"], [NSBundle.mainBundle.infoDictionary objectForKey:@"CFBundleShortVersionString"]] key:ExLogViewTypeInfo];
-#endif
+    NSDictionary *dict = @{
+        @"dev_model": [[UIDevice currentDevice].deviceVersion stringByReplacingOccurrencesOfString:@" " withString:@"_"],
+        @"dev_os"   : @"ios",
+        @"dev_os_version":[NSBundle.mainBundle.infoDictionary objectForKey:@"CFBundleShortVersionString"],
+        @"dev_os_name":[NSBundle.mainBundle.infoDictionary objectForKey:@"CFBundleDisplayName"]
+    };
+    
+    [self logText:dict.logDescription key:ExLogViewTypeInfo];
 }
 
 + (instancetype)sharedManager {

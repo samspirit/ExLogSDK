@@ -96,7 +96,7 @@
     data.company = @"is nothing";
     data.project = @[@"project1", @"project2", @"project3", @"project4", @"project5"];
     data.learn = @{@"key":@"value", @"project":@(10), @"team":@[@"zhangsan", @"lisi", @"wangwu"]};
-    ExLog(data.objectDescription);
+    ExLog(data.logDescription);
 }
 
 - (void)autoClick

@@ -14,7 +14,8 @@
 
 #pragma mark - NSObject+Log
 @implementation NSObject (Log)
-- (NSString *)objectDescription
+
+- (NSString *)logDescription
 {
     NSString *desc = @"\n{";
     //
@@ -45,7 +46,8 @@
 
 #pragma mark - NSDictionary+Log
 @implementation NSDictionary (Log)
-- (NSString *)descriptionWithLocale:(id)locale indent:(NSUInteger)level
+
+- (NSString *)logDescription
 {
     NSMutableString *str = [NSMutableString stringWithString:@"{\n"];
     [self enumerateKeysAndObjectsUsingBlock:^(id  _Nonnull key, id  _Nonnull obj, BOOL * _Nonnull stop) {
@@ -54,12 +56,13 @@
     [str appendString:@"}"];
     return str;
 }
+
 @end
 
 #pragma mark - NSArray+Log
 @implementation NSArray (Log)
 
-- (NSString *)descriptionWithLocale:(id)locale indent:(NSUInteger)level
+- (NSString *)logDescription
 {
     NSMutableString *str = [NSMutableString stringWithString:@"(\n"];
     [self enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {

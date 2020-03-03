@@ -1,5 +1,5 @@
 PODS:
-  - ExLogSDK (0.2.1)
+  - ExLogSDK (0.2.2)
 
 DEPENDENCIES:
   - ExLogSDK (from `../`)
@@ -9,7 +9,7 @@ EXTERNAL SOURCES:
     :path: "../"
 
 SPEC CHECKSUMS:
-  ExLogSDK: 80ff563b002c8eacd06e26d92ceac68aeadb36e9
+  ExLogSDK: afbd31bce51cdf31450679a421069cc0aafe8d0e
 
 PODFILE CHECKSUM: 1ebbcdc114939c61adc8d5e67bee948cbbdf83f3
 

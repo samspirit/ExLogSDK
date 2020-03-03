@@ -33,10 +33,13 @@ static CGFloat const heightText = (25 + 25);
 @interface ExLogModel : NSObject
 //
 @property (nonatomic, strong) NSAttributedString *attributeString;
+
 @property (nonatomic, assign) CGFloat height;
 
 - (instancetype)initWithlog:(NSString *)text key:(ExLogViewType)type;
+
 - (ExLogViewType)getTypeByName:(NSString *)name;
+
 - (NSString *)getNameByType:(ExLogViewType)type;
 @end
 
@@ -47,7 +50,9 @@ static CGFloat const heightText = (25 + 25);
 @property (nonatomic, strong, readonly) NSArray *logs;
 
 - (ExLogModel *)logWith:(NSString *)text key:(ExLogViewType)type;
+
 - (void)read;
+
 - (void)clear;
 
 @end

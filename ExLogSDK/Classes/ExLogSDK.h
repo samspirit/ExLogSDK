@@ -35,7 +35,6 @@ NS_ASSUME_NONNULL_BEGIN
 
 - (void)logText:(NSString *)text;
 - (void)logText:(NSString *)text key:(ExLogViewType)key;
-
 @end
 
 NS_ASSUME_NONNULL_END

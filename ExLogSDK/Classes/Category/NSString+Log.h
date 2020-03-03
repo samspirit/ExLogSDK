@@ -15,12 +15,14 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface NSObject (Log)
 /// 对象信息（需要主动调用）
-- (NSString *)objectDescription;
+- (NSString *)logDescription;
 @end
 
 @interface NSDictionary (Log)
+- (NSString *)logDescription;
 @end
 
 @interface NSArray (Log)
+- (NSString *)logDescription;
 @end
 NS_ASSUME_NONNULL_END
