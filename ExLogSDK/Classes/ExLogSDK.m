@@ -146,15 +146,12 @@ static CGFloat const sizeButton = 60.0;
 
 - (void)logText:(NSString *)text key:(ExLogViewType)key
 {
-#ifdef DEBUG
     ExLogModel *model = [self.logFile logWith:text key:key];
     [self.logView addModel:model];
-#endif
 }
 // 日志清理
 - (void)logClear
 {
-#ifdef DEBUG
     UIAlertController *alertController = [UIAlertController alertControllerWithTitle:nil message:@"确认删除log？" preferredStyle:UIAlertControllerStyleAlert];
     UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) { }];
     UIAlertAction *deleteAction = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDestructive handler:^(UIAlertAction * _Nonnull action) {
@@ -164,13 +161,11 @@ static CGFloat const sizeButton = 60.0;
     [alertController addAction:cancelAction];
     [alertController addAction:deleteAction];
     [[self getViewController] presentViewController:alertController animated:YES completion:NULL];
-    #endif
 }
 
 /// 复制日志
 - (void)logCopy
 {
-#ifdef DEBUG
     NSMutableString *text = [[NSMutableString alloc] init];
     for (ExLogModel *model in self.logFile.logs) {
         NSString *string = model.attributeString.string;
@@ -179,13 +174,11 @@ static CGFloat const sizeButton = 60.0;
     UIPasteboard *pasteboard = [UIPasteboard generalPasteboard];
     pasteboard.string = text;
     //
-    
     UIAlertController *alertController = [UIAlertController alertControllerWithTitle:nil message:@"已复制到系统粘贴板" preferredStyle:UIAlertControllerStyleAlert];
     UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
     }];
     [alertController addAction:cancelAction];
     [[self getViewController] presentViewController:alertController animated:YES completion:NULL];
-#endif
 }
 
 - (void)logViewShow:(BOOL)show

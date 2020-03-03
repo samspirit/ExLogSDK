@@ -9,8 +9,6 @@
 #import "NSString+Log.h"
 #import "ExLogModel.h"
 
-
-#ifdef DEBUG
 /// 中控打印及log记录
 #define ExLog(format, ...) {NSLog( @"< %@:(第 %d 行) > %@", [[NSString stringWithUTF8String:__FILE__] lastPathComponent], __LINE__, format);[ExLogSDK.sharedManager logText:format];}
 
@@ -21,7 +19,6 @@
 #define ExLogWarn(format, ...) {NSLog( @"< %@:(第 %d 行) > %@", [[NSString stringWithUTF8String:__FILE__] lastPathComponent], __LINE__, format);[ExLogSDK.sharedManager logText:format key:ExLogViewTypeWarn];}
 
 #define ExLogInfo(format, ...) {NSLog( @"< %@:(第 %d 行) > %@", [[NSString stringWithUTF8String:__FILE__] lastPathComponent], __LINE__, format);[ExLogSDK.sharedManager logText:format key:ExLogViewTypeInfo];}
-#endif
 
 
 NS_ASSUME_NONNULL_BEGIN
